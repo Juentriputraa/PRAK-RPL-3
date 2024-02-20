@@ -1,0 +1,57 @@
+public class SmartCard {
+    private String nama;
+    private long saldo;
+
+    public void setNama(String nama) {
+        this.nama = nama;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setSaldo(long saldo) {
+        if (saldo > 0) {
+            this.saldo = saldo;
+        }
+    }
+
+    public long getSaldo() {
+        return saldo;
+    }
+
+    public void topUp(Voucher vch) {
+        String kodeVoucher = vch.getKode();
+        if (kodeVoucher.equals("VC")) {
+            System.out.println("Top up gagal. Kode voucher tidak valid.");
+        } else if (kodeVoucher.matches("VC\\d+")) {
+            long nominal = Long.parseLong(kodeVoucher.substring(2));
+            saldo += nominal;
+            System.out.println("Top up berhasil. Saldo sekarang: " + saldo);
+        } else {
+            System.out.println("Top up gagal. Kode voucher tidak valid.");
+        }
+    }
+}
+
+public class Voucher {
+    private String kode;
+    private long nominal;
+
+    public void setNominal(long nominal) {
+        if (nominal <= 0) {
+            this.kode = "VC";
+        } else {
+            this.kode = "VC" + nominal;
+        }
+        this.nominal = nominal;
+    }
+
+    public String getKode() {
+        return kode;
+    }
+
+    public void buatVoucher() {
+        System.out.println("Voucher berhasil dibuat. Kode voucher: " + kode);
+    }
+}
