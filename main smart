@@ -1,20 +1,23 @@
-public class Main {
+package com.ug5b.soal1;
+
+public class SmartCardMain {
 
     public static void main(String[] args) {
-        SmartCard card1 = new SmartCard("Budi");
-        System.out.println("Nama: " + card1.getNama());
-        System.out.println("Saldo awal: " + card1.getSaldo());
+        SmartCard sc = new SmartCard("Guntur Putra"); // Nama dimasukkan langsung di konstruktor
+        System.out.println("Nama: " + sc.getNama()); // Menampilkan nama
+        System.out.println("Saldo awal: " + sc.getSaldo());
 
-        Voucher voucher1 = new Voucher(150000);
-        card1.topUp(voucher1);
+        Voucher vc1 = new Voucher(-50000); // Nominal dimasukkan langsung di konstruktor
+        Voucher vc2 = new Voucher(50000);
+        Voucher vc3 = new Voucher(150000);
 
-        Voucher voucher2 = new Voucher(-50000);
-        card1.topUp(voucher2);
+        System.out.println("\n=====Skenario 1: Top Up Gagal=====");
+        sc.topUp(vc1);
+        System.out.println("===> Saldo " + sc.getNama() + " saat ini Rp " + sc.getSaldo());
 
-        Voucher voucher3 = new Voucher(50000);
-        card1.topUp(voucher3);
-
-        System.out.println("Saldo akhir: " + card1.getSaldo());
+        System.out.println("\n=====Skenario 2: Top Up Sukses=====");
+        sc.topUp(vc2);
+        sc.topUp(vc3);
+        System.out.println("===> Saldo " + sc.getNama() + " saat ini Rp " + sc.getSaldo());
     }
-
 }
