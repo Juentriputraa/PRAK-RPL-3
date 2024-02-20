@@ -1,0 +1,23 @@
+public class Voucher {
+
+    private String kode;
+    private long nominal;
+
+    public Voucher(long nominal) {
+        if (nominal <= 0) {
+            this.kode = "VC";
+        } else {
+            this.kode = "VC" + nominal;
+        }
+        this.nominal = nominal;
+    }
+
+    public String getKode() {
+        return kode;
+    }
+
+    public long getNominal() {
+        return nominal;
+    }
+
+}
