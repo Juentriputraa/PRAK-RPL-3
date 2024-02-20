@@ -1,0 +1,58 @@
+public class Buku {
+
+    private String kodeBuku;
+    private String judulBuku;
+    private String pengarang;
+    private int stok;
+    private long harga;
+
+    private static int counter = 100;
+
+    public Buku(String judulBuku, String pengarang, int argStok, long argHarga) {
+        this.kodeBuku = "NV" + String.format("%05d", counter++);
+        this.judulBuku = judulBuku;
+        this.pengarang = pengarang;
+        this.stok = argStok <= 0 ? 0 : argStok;
+        this.harga = argHarga <= 0 ? 0 : argHarga;
+    }
+
+    public String getKodeBuku() {
+        return kodeBuku;
+    }
+
+    public String getJudulBuku() {
+        return judulBuku;
+    }
+
+    public String getPengarang() {
+        return pengarang;
+    }
+
+    public int getStok() {
+        return stok;
+    }
+
+    public void setStok(int stok) {
+        this.stok = stok;
+    }
+
+    public long getHarga() {
+        return harga;
+    }
+
+    public void setHarga(long harga) {
+        this.harga = harga;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                Kode Buku: %s
+                Judul Buku: %s
+                Pengarang: %s
+                Stok: %d
+                Harga: Rp%,d
+                """, kodeBuku, judulBuku, pengarang, stok, harga);
+    }
+
+}
