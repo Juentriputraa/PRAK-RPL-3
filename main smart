@@ -1,0 +1,19 @@
+public class Main {
+
+    public static void main(String[] args) {
+        SmartCard card = new SmartCard();
+        System.out.println("Saldo awal: " + card.getSaldo());
+
+        Voucher voucher1 = new Voucher(150000);
+        card.topUp(voucher1);
+
+        Voucher voucher2 = new Voucher(-50000);
+        card.topUp(voucher2);
+
+        Voucher voucher3 = new Voucher(50000);
+        card.topUp(voucher3);
+
+        System.out.println("Saldo akhir: " + card.getSaldo());
+    }
+
+}
