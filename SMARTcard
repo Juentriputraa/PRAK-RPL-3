@@ -1,0 +1,30 @@
+public class SmartCard {
+
+    private long saldo;
+
+    public SmartCard() {
+        this.saldo = 0;
+    }
+
+    public long getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(long saldo) {
+        if (saldo > 0) {
+            this.saldo = saldo;
+        }
+    }
+
+    public void topUp(Voucher vch) {
+        String kodeVoucher = vch.getKodeVoucher();
+        if (!kodeVoucher.equals("VC")) {
+            long nominal = Long.parseLong(kodeVoucher.substring(2));
+            this.saldo += nominal;
+            System.out.println("Top up berhasil! Saldo Anda sekarang: " + this.saldo);
+        } else {
+            System.out.println("Top up gagal! Kode voucher tidak valid.");
+        }
+    }
+
+}
