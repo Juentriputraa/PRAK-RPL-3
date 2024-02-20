@@ -1,9 +1,19 @@
 public class SmartCard {
 
+    private String nama;
     private long saldo;
 
-    public SmartCard() {
+    public SmartCard(String nama) {
+        this.nama = nama;
         this.saldo = 0;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public long getSaldo() {
@@ -17,11 +27,11 @@ public class SmartCard {
     }
 
     public void topUp(Voucher vch) {
-        String kodeVoucher = vch.getKodeVoucher();
+        String kodeVoucher = vch.getKode();
         if (!kodeVoucher.equals("VC")) {
             long nominal = Long.parseLong(kodeVoucher.substring(2));
             this.saldo += nominal;
-            System.out.println("Top up berhasil! Saldo Anda sekarang: " + this.saldo);
+            System.out.println("Top up berhasil! Saldo " + nama + " sekarang: " + this.saldo);
         } else {
             System.out.println("Top up gagal! Kode voucher tidak valid.");
         }
